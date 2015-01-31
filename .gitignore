@@ -1,0 +1,6 @@
+# ignore all folder & files, except _vimrc
+*
+!.gitignore
+!_vimrc
+!vimfiles/colors/jellybeans.vim
+ 
