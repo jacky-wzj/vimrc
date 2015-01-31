@@ -6,22 +6,24 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 "set termencoding=utf-8 "只对终端影响(默认
 "set ffs=unix,dos,mac "use UNIX as the standard file type
 
-" ========================== Color & syntax =================================
+" ========================== Color & syntax & Theme =================================
 syntax on
 colorscheme jellybeans
 filetype plugin indent on
 set number
+set nowrap "不折行
+set showcmd "在状态栏显示正在输入的命令
+set laststatus=2 "总是显示状态栏
+
+" ==========================  Search & Replace =================================
+set ignorecase "搜索的时候大小写不敏感
 
 " ========================== The width of Tap ======================================
 set tabstop=4 "设置 tab 宽度为4
 set et " 编辑的时候将所有的tab设置为空格(expandtab)
-set smarttab "使用Backspace直接删除tab
+"set smarttab "使用Backspace直接删除tab
 set softtabstop=4 "设置自动对齐空格数
 " set shiftwidth=4  "按退格键时可以一次删除4个空格
-set showcmd "在状态栏显示正在输入的命令
-set laststatus=2 "总是显示状态栏
-set nowrap "不折行
-set ignorecase "搜索的时候大小写不敏感
 
 " ========================== Vundle ======================================
 set nocompatible              " be iMproved, required
