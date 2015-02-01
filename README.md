@@ -1,12 +1,18 @@
 # vimrc
-Jacky vim config. vim plugin base on Vundle.
-- encoding 
-- Color & syntax 
-- Fix Tap 
-- Vundle 
-- vim-airline 
-- ctrip.vim 
-- vim-fugitive 
-- Toggle Menu and Toolbar 
+Jacky's vimrc. vim plugin base on Vundle. 
 
-__find more detail in _vimrc__
+- Encoding  
+- Color & syntax  
+- Fix Tap  
+- Toggle Menu and Toolbar  
+- Vundle  
+-- vim-airline   
+-- ctrip.vim   
+-- vim-fugitive   
+-- Syntastic  
+-- Jshint  
+   
+## Syntastic
+
+- Javascript 的语法检查基于 Jshint , 因此需要先安装 NodeJs & Npm
+
