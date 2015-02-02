@@ -25,6 +25,8 @@ set et " 编辑的时候将所有的tab设置为空格(expandtab)
 set softtabstop=4 "设置自动对齐空格数
 " set shiftwidth=4  "按退格键时可以一次删除4个空格
 
+" ========================== key mapping ======================================
+let mapleader = ","
 " ========================== Vundle ======================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -58,7 +60,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['jshint']
+" ========================== Vundle - syntastic ======================================
 
+Plugin 'scrooloose/nerdcommenter'
 "Plugin 'mileszs/ack.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
