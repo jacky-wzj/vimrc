@@ -2,4 +2,5 @@
 *
 !.gitignore
 !_vimrc
+!ctags.exe
 !jellybeans.vim
