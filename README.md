@@ -11,7 +11,7 @@ Jacky's vimrc. vim plugin base on Vundle.
 -- vim-fugitive   
 -- Syntastic  
 -- Jshint  
--- NERDCommenter
+-- NERDCommenter  
 -- tagbars  
    
 ## Syntastic
@@ -20,7 +20,7 @@ Jacky's vimrc. vim plugin base on Vundle.
 
 
 ## MEMO
-- Maping <Leader> to ,    
+- Maping Leader to ,    
 - Ctrip using ctrl+p as shotkey  
 - NERDCommenter using ",c " as shotkey  
 - Tagbars 依赖 *Exuberant catgs*  也就是传说中的（ctags.exe）, 因此需要在环境变量中指定目录或设定 *g:tagbar_ctags_bin*  
