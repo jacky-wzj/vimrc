@@ -57,11 +57,9 @@ Plugin 'kien/ctrlp.vim'
 
 " ========================== Vundle - syntastic ======================================
 Plugin 'scrooloose/syntastic'
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -76,6 +74,7 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'mileszs/ack.vim'       "==由于Ack 只支持 *uix
 Plugin 'godlygeek/tabular'
 Plugin 'ervandew/supertab'
+Plugin 'msanders/snipmate.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo

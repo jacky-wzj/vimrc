@@ -13,6 +13,7 @@ Jacky's vimrc. vim plugin base on Vundle.
 -- Jshint  
 -- NERDCommenter  
 -- tagbars  
+-- snipmate.vim  
    
 ## Syntastic
 
