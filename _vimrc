@@ -1,3 +1,4 @@
+xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 " ============================= encoding ==============================
 set encoding=utf-8 "设置默认编码方式
 set langmenu=zh_CN.UTF-8
@@ -20,13 +21,20 @@ set ignorecase "搜索的时候大小写不敏感
 
 " ========================== The width of Tap ======================================
 set tabstop=4 "设置 tab 宽度为4
-set et " 编辑的时候将所有的tab设置为空格(expandtab)
-"set smarttab "使用Backspace直接删除tab
+set shiftwidth=4  "按退格键时可以一次删除4个空格
 set softtabstop=4 "设置自动对齐空格数
-" set shiftwidth=4  "按退格键时可以一次删除4个空格
+set expandtab " 编辑的时候将所有的 tab 设置为空格(expandtab)
+set smartindent 
+set smarttab
 
 " ========================== key mapping ======================================
 let mapleader = ","
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+map <leader>jj <C-w>10+
+map <leader>kk <C-w>10-
 " ========================== Vundle ======================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -64,7 +72,10 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
-"Plugin 'mileszs/ack.vim'
+"Plugin 'marijnh/tern_for_vim'  "==由于中文路径的问题，导致Python2的不支持，进而无法加载urllib2
+"Plugin 'mileszs/ack.vim'       "==由于Ack 只支持 *uix
+Plugin 'godlygeek/tabular'
+Plugin 'ervandew/supertab'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -144,3 +155,5 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=T <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
+
+
