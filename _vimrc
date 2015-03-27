@@ -1,3 +1,5 @@
+cd d:\work\git\ " 设置默认的工作目录
+
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 " ============================= encoding ==============================
 set encoding=utf-8 "设置默认编码方式
@@ -29,12 +31,14 @@ set smarttab
 
 " ========================== key mapping ======================================
 let mapleader = ","
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
-map <leader>jj <C-w>10+
-map <leader>kk <C-w>10-
+map <c-k> <C-w><Up>
+map <c-j> <C-w><Down>
+map <c-l> <C-w><Right>
+map <c-h> <C-w><Left>
+map <leader>jj <C-w>10+        "屏幕下移
+map <leader>kk <C-w>10-        "屏幕上移
+map <leader>n :NERDTreeToggle<CR>
+map <leader>r :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
 " ========================== Vundle ======================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -54,7 +58,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 "Plugin 'tpope/vim-fugitive'   "Vim-Git
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
+Plugin 'git@github.com:scrooloose/nerdtree.git'
+autocmd vimenter * NERDTree  "NERDTree 启动时开启
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif "NERDTree 随最后一个窗口关闭
+let NERDTreeWinPos="right" "NERDTree 在右侧显示
 
 " ========================== Vundle - syntastic ======================================
 Plugin 'scrooloose/syntastic'

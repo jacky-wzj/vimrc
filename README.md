@@ -14,6 +14,7 @@ Jacky's vimrc. vim plugin base on Vundle.
 -- NERDCommenter  
 -- tagbars  
 -- snipmate.vim  
+-- NERDTree  
    
 ## Syntastic
 
