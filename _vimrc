@@ -54,6 +54,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 "Plugin 'tpope/vim-fugitive'   "Vim-Git
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 " ========================== Vundle - syntastic ======================================
 Plugin 'scrooloose/syntastic'
