@@ -164,4 +164,15 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
+" ==================== Vim swap files =====================
+" swap files (.swp) in a common location
+" // means use the file's full path
+set dir=~/vimfiles/_swap// 
 
+" backup files (~) in a common location if possible
+set backup
+set backupdir=~/vimfiles/_backup/,~/tmp,.
+
+" turn on undo files, put them in a common location
+set undofile
+set undodir=~/vimfiles/_undo/
