@@ -1,10 +1,11 @@
-cd d:\work\git\ " 设置默认的工作目录
+cd d:\workspace\ " 设置默认的工作目录
 
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 " ============================= encoding ==============================
 set encoding=utf-8 "设置默认编码方式
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
+set guifont=Consolas:h11
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
 "set termencoding=utf-8 "只对终端影响(默认
 "set ffs=unix,dos,mac "use UNIX as the standard file type
@@ -56,38 +57,40 @@ call vundle#begin(path)
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
-"Plugin 'tpope/vim-fugitive'   "Vim-Git
 Plugin 'kien/ctrlp.vim'
-"Plugin 'scrooloose/nerdtree'
-Plugin 'git@github.com:scrooloose/nerdtree.git'
+Plugin 'preservim/nerdtree'
+"Plugin 'Xuyuanp/nerdtree-git-plugin' "github status
 autocmd vimenter * NERDTree  "NERDTree 启动时开启
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif "NERDTree 随最后一个窗口关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
 let NERDTreeWinPos="right" "NERDTree 在右侧显示
+let g:NERDTreeHidden=0 " show hidden file
+let NERDTreeDirArrows=1 "Show Node model
+let g:NERDTreeShowlineNumber=1 "Show line number.
 
 " ========================== Vundle - syntastic ======================================
-Plugin 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Plugin 'scrooloose/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_javascript_checkers = ['jshint']
 " ========================== Vundle - syntastic ======================================
 
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'majutsushi/tagbar'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'majutsushi/tagbar'
 "Plugin 'marijnh/tern_for_vim'  "==由于中文路径的问题，导致Python2的不支持，进而无法加载urllib2
 "Plugin 'mileszs/ack.vim'       "==由于Ack 只支持 *uix
-Plugin 'godlygeek/tabular'
-Plugin 'ervandew/supertab'
-Plugin 'msanders/snipmate.vim'
+" Plugin 'godlygeek/tabular'
+" Plugin 'ervandew/supertab'
+" Plugin 'msanders/snipmate.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -116,44 +119,55 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " =================================== Default ===============================
-" set nocompatible
+" Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
 
-set diffexpr=MyDiff()
+" Use the internal diff if available.
+" Otherwise use the special 'diffexpr' for Windows.
+if &diffopt !~# 'internal'
+  set diffexpr=MyDiff()
+endif
 function MyDiff()
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
   let arg1 = v:fname_in
   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
   let arg2 = v:fname_new
   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
   let arg3 = v:fname_out
   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
+  let arg3 = substitute(arg3, '!', '\!', 'g')
   if $VIMRUNTIME =~ ' '
     if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
     else
       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
     endif
   else
     let cmd = $VIMRUNTIME . '\diff'
   endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
 endfunction
 
 " ==================== Toggle Menu and Toolbar =====================
 if has("gui_running") 
   au GUIEnter * simalt ~x " 窗口启动时自动最大化 
-  set guioptions-=m " 隐藏菜单栏 
-  set guioptions-=T " 隐藏工具栏 
-  set guioptions-=L " 隐藏左侧滚动条 
-  set guioptions-=r " 隐藏右侧滚动条 
-  set guioptions-=b " 隐藏底部滚动条 
+set guioptions-=m " 隐藏菜单栏 
+set guioptions-=T " 隐藏工具栏 
+set guioptions-=L " 隐藏左侧滚动条 
+set guioptions-=r " 隐藏右侧滚动条 
+set guioptions-=b " 隐藏底部滚动条 
 "  set showtabline=0 " 隐藏Tab栏 
 endif 
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
@@ -167,7 +181,7 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 " ==================== Vim swap files =====================
 " swap files (.swp) in a common location
 " // means use the file's full path
-set dir=~/vimfiles/_swap// 
+set dir=~/vimfiles/_swap//
 
 " backup files (~) in a common location if possible
 set backup
