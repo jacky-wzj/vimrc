@@ -1,6 +1,7 @@
 cd d:\workspace\ " 设置默认的工作目录
 
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
+set autochdir "Automatically change the current directory"
 " ============================= encoding ==============================
 set encoding=utf-8 "设置默认编码方式
 set langmenu=zh_CN.UTF-8
@@ -63,9 +64,10 @@ Plugin 'preservim/nerdtree'
 autocmd vimenter * NERDTree  "NERDTree 启动时开启
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
 let NERDTreeWinPos="right" "NERDTree 在右侧显示
-let g:NERDTreeHidden=0 " show hidden file
+let NERDTreeShowHidden=1 " show hidden file
 let NERDTreeDirArrows=1 "Show Node model
-let g:NERDTreeShowlineNumber=1 "Show line number.
+let NERDTreeShowLineNumbers=1 "Show line number
+let NERDTreeHighlightCursorline=1
 
 " ========================== Vundle - syntastic ======================================
 " Plugin 'scrooloose/syntastic'
