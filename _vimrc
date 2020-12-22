@@ -1,4 +1,4 @@
-cd d:\workspace\ " 设置默认的工作目录
+cd ~/workspace " 设置默认的工作目录
 
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 set autochdir "Automatically change the current directory"
@@ -6,14 +6,15 @@ set autochdir "Automatically change the current directory"
 set encoding=utf-8 "设置默认编码方式
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
-set guifont=Consolas:h11
+"set guifont=Consolas:h13
+set guifont=Monaco:h14
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
 "set termencoding=utf-8 "只对终端影响(默认
 "set ffs=unix,dos,mac "use UNIX as the standard file type
 
 " ========================== Color & syntax & Theme =================================
 syntax on
-colorscheme jellybeans
+"colorscheme jellybeans
 filetype plugin indent on
 set number
 set nowrap "不折行
@@ -50,9 +51,11 @@ filetype off                  " required
 " call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-set rtp+=~/vimfiles/bundle/Vundle.vim/
-let path='~/vimfiles/bundle'
-call vundle#begin(path)
+"set rtp+=~/vimfiles/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/Vundle.vim
+"let path='~/vimfiles/bundle'
+"call vundle#begin(path)
+call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -164,7 +167,7 @@ endfunction
 
 " ==================== Toggle Menu and Toolbar =====================
 if has("gui_running") 
-  au GUIEnter * simalt ~x " 窗口启动时自动最大化 
+"  au GUIEnter * simalt ~x " 窗口启动时自动最大化 
 set guioptions-=m " 隐藏菜单栏 
 set guioptions-=T " 隐藏工具栏 
 set guioptions-=L " 隐藏左侧滚动条 
@@ -183,7 +186,7 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 " ==================== Vim swap files =====================
 " swap files (.swp) in a common location
 " // means use the file's full path
-set dir=~/vimfiles/_swap//
+"set dir=~/vimfiles/_swap//
 
 " backup files (~) in a common location if possible
 set backup
