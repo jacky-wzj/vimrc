@@ -7,20 +7,19 @@ set encoding=utf-8 "设置默认编码方式
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
 "set guifont=Consolas:h13
-set guifont=Monaco:h14
+set guifont=Monaco:h14 noanti
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
 "set termencoding=utf-8 "只对终端影响(默认
 "set ffs=unix,dos,mac "use UNIX as the standard file type
 
 " ========================== Color & syntax & Theme =================================
 syntax on
-"colorscheme jellybeans
 filetype plugin indent on
 set number
 set nowrap "不折行
 set showcmd "在状态栏显示正在输入的命令
 set laststatus=2 "总是显示状态栏
-
+colorscheme jellybeans
 " ==========================  Search & Replace =================================
 set ignorecase "搜索的时候大小写不敏感
 
@@ -63,6 +62,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'preservim/nerdtree'
+Plugin 'nanotech/jellybeans.vim' "使用的时候需要在.vim下新建 color目录并将 jellybeans.vim copy过去
 "Plugin 'Xuyuanp/nerdtree-git-plugin' "github status
 autocmd vimenter * NERDTree  "NERDTree 启动时开启
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
@@ -167,13 +167,13 @@ endfunction
 
 " ==================== Toggle Menu and Toolbar =====================
 if has("gui_running") 
-"  au GUIEnter * simalt ~x " 窗口启动时自动最大化 
-set guioptions-=m " 隐藏菜单栏 
-set guioptions-=T " 隐藏工具栏 
+"  au GUIEnter * simalt ~x " 窗口启动时自动最大化，只对windows有效
+"set guioptions-=m " 隐藏菜单栏 
+"set guioptions-=T " 隐藏工具栏 
 set guioptions-=L " 隐藏左侧滚动条 
 set guioptions-=r " 隐藏右侧滚动条 
 set guioptions-=b " 隐藏底部滚动条 
-"  set showtabline=0 " 隐藏Tab栏 
+"set showtabline=0 " 隐藏Tab栏 
 endif 
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
