@@ -39,6 +39,8 @@ map <c-l> <C-w><Right>
 map <c-h> <C-w><Left>
 map <leader>jj <C-w>10+        "屏幕下移
 map <leader>kk <C-w>10-        "屏幕上移
+map <leader>hh <C-w>30>
+map <leader>ll <C-w>30<
 map <leader>n :NERDTreeToggle<CR>
 map <leader>r :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
 " ========================== Vundle ======================================
