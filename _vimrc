@@ -109,6 +109,7 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'user/L9', {'name': 'newL9'}
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1 "行数较多的时候折叠会导致中文输入卡，因此需要关闭vim-markdown的折叠功能
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
