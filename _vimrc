@@ -19,7 +19,8 @@ set number
 set nowrap "不折行
 set showcmd "在状态栏显示正在输入的命令
 set laststatus=2 "总是显示状态栏
-colorscheme jellybeans
+colorscheme molokai
+"colorscheme jellybeans
 " ==========================  Search & Replace =================================
 set ignorecase "搜索的时候大小写不敏感
 
@@ -63,7 +64,7 @@ Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'nanotech/jellybeans.vim' "使用的时候需要在.vim下新建 color目录并将 jellybeans.vim copy过去
-"Plugin 'Xuyuanp/nerdtree-git-plugin' "github status
+Plugin 'Xuyuanp/nerdtree-git-plugin' "github status
 autocmd vimenter * NERDTree  "NERDTree 启动时开启
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
 let NERDTreeWinPos="right" "NERDTree 在右侧显示
@@ -110,6 +111,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim'  
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 let g:vim_markdown_folding_disabled = 1 "行数较多的时候折叠会导致中文输入卡，因此需要关闭vim-markdown的折叠功能
