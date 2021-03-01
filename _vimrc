@@ -3,14 +3,14 @@ cd ~/workspace " 设置默认的工作目录
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 set autochdir "Automatically change the current directory"
 " ============================= encoding ==============================
-set encoding=utf-8 "设置默认编码方式
+set encoding=UTF-8 "设置默认编码方式
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
 "set guifont=Consolas:h13
 set guifont=Monaco:h14 noanti
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
+set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
 "set termencoding=utf-8 "只对终端影响(默认
-"set ffs=unix,dos,mac "use UNIX as the standard file type
+set ffs=unix,dos,mac "use UNIX as the standard file type
 
 " ========================== Color & syntax & Theme =================================
 syntax on
@@ -59,12 +59,15 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
+" 安装nerd-fonts 以显示文本图形ryanoasis/nerd-fonts
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+let g:airline_powerline_fonts = 1
 Plugin 'preservim/nerdtree'
-Plugin 'nanotech/jellybeans.vim' "使用的时候需要在.vim下新建 color目录并将 jellybeans.vim copy过去
-Plugin 'Xuyuanp/nerdtree-git-plugin' "github status
+Plugin 'kien/ctrlp.vim'
+" Plugin 'nanotech/jellybeans.vim' "使用的时候需要在.vim下新建 color目录并将 jellybeans.vim copy过去
+" Plugin 'Xuyuanp/nerdtree-git-plugin' "macvim 下报错，查看错误echo errmsg
+" let g:NERDTreeGitStatusUseNerdFonts = 1
+Plugin 'ryanoasis/vim-devicons'
 autocmd vimenter * NERDTree  "NERDTree 启动时开启
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
 let NERDTreeWinPos="right" "NERDTree 在右侧显示
@@ -72,7 +75,6 @@ let NERDTreeShowHidden=1 " show hidden file
 let NERDTreeDirArrows=1 "Show Node model
 let NERDTreeShowLineNumbers=1 "Show line number
 let NERDTreeHighlightCursorline=1
-
 " ========================== Vundle - syntastic ======================================
 " Plugin 'scrooloose/syntastic'
 " set statusline+=%#warningmsg#
@@ -112,8 +114,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim'  
 Plugin 'flazz/vim-colorschemes'
-
-" All of your Plugins must be added before the following line
 let g:vim_markdown_folding_disabled = 1 "行数较多的时候折叠会导致中文输入卡，因此需要关闭vim-markdown的折叠功能
 
 " All of your Plugins must be added before the following line
