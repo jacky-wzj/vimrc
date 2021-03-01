@@ -65,11 +65,14 @@ Plugin 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 Plugin 'preservim/nerdtree'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'nanotech/jellybeans.vim'
+" Plugin 'nanotech/jellybeans.vim' "vim-colorscheme 替代
 " Plugin 'Xuyuanp/nerdtree-git-plugin' "报错，通过echo errmsg 查看
 " let g:NERDTreeGitStatusUseNerdFonts = 1
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'preservim/tagbar'
+Plugin 'ryanoasis/vim-devicons' "增加符号标识
+Plugin 'preservim/tagbar' "依赖tags，需要单独安装
+Plugin 'Yggdroot/indentLine' "缩进显示
+let g:indentLine_enabled = 1
+Plugin 'sjl/gundo.vim' "此次文本编辑记录
 
 autocmd vimenter * NERDTree  "NERDTree 启动时开启
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
@@ -212,3 +215,4 @@ colorscheme molokai
 " =====================Tagbar ==============
 nmap <leader>mm :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+nmap <leader>hh :GundoToggle<CR>
