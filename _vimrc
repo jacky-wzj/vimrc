@@ -13,8 +13,8 @@ set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 "set ffs=unix,dos,mac "use UNIX as the standard file type
 
 " ========================== Color & syntax & Theme =================================
-syntax on
-filetype plugin indent on
+"syntax on
+"filetype plugin indent on
 set number
 set nowrap "不折行
 set showcmd "在状态栏显示正在输入的命令
@@ -43,99 +43,40 @@ nmap <leader>hh <C-w><10
 nmap <leader>ll <C-w>>10
 nmap <leader>n :NERDTreeToggle<CR>
 "map <leader>r :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
-" ========================== Vundle ======================================
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-"set rtp+=~/vimfiles/bundle/Vundle.vim/
-set rtp+=~/.vim/bundle/Vundle.vim
-"let path='~/vimfiles/bundle'
-"call vundle#begin(path)
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-" 安装nerd-fonts 以显示文本图形ryanoasis/nerd-fonts
-Plugin 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-Plugin 'preservim/nerdtree'
-Plugin 'kien/ctrlp.vim'
-" Plugin 'nanotech/jellybeans.vim' "vim-colorscheme 替代
-" Plugin 'Xuyuanp/nerdtree-git-plugin' "报错，通过echo errmsg 查看
+" ========================== VimPlug ======================================
+call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-airline'
+Plug 'preservim/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin' "报错，通过echo errmsg 查看
 " let g:NERDTreeGitStatusUseNerdFonts = 1
-Plugin 'ryanoasis/vim-devicons' "增加符号标识
-Plugin 'preservim/tagbar' "依赖tags，需要单独安装
-Plugin 'Yggdroot/indentLine' "缩进显示
-let g:indentLine_enabled = 1
-Plugin 'sjl/gundo.vim' "此次文本编辑记录
+Plug 'kien/ctrlp.vim'
+Plug 'ryanoasis/vim-devicons' "增加符号标识
+Plug 'preservim/tagbar' "依赖tags，需要单独安装
+Plug 'Yggdroot/indentLine' "缩进显示
+Plug 'sjl/gundo.vim' "此次文本编辑记录
+Plug 'dyng/ctrlsf.vim' "依赖ack
+Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim' 
+Plug 'flazz/vim-colorschemes'
 
-autocmd vimenter * NERDTree  "NERDTree 启动时开启
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
-let NERDTreeWinPos="right" "NERDTree 在右侧显示
-let NERDTreeShowHidden=1 " show hidden file
-let NERDTreeDirArrows=1 "Show Node model
-let NERDTreeShowLineNumbers=1 "Show line number
-let NERDTreeHighlightCursorline=1
-" ========================== Vundle - syntastic ======================================
-" Plugin 'scrooloose/syntastic'
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_javascript_checkers = ['jshint']
-" ========================== Vundle - syntastic ======================================
-
-" Plugin 'scrooloose/nerdcommenter'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'marijnh/tern_for_vim'  "==由于中文路径的问题，导致Python2的不支持，进而无法加载urllib2
-" Plugin 'mileszs/ack.vim'       "==由于Ack 只支持 *uix
-" Plugin 'godlygeek/tabular'
-" Plugin 'ervandew/supertab'
-" Plugin 'msanders/snipmate.vim'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'iamcco/markdown-preview.nvim' 
-Plugin 'flazz/vim-colorschemes'
-let g:vim_markdown_folding_disabled = 1 "行数较多的时候折叠会导致中文输入卡，因此需要关闭vim-markdown的折叠功能
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'majutsushi/tagbar'
+" Plug 'marijnh/tern_for_vim'  "==由于中文路径的问题，导致Python2的不支持，进而无法加载urllib2
+" Plug 'mileszs/ack.vim'       "==由于Ack 只支持 *uix
+" Plug 'godlygeek/tabular'
+" Plug 'ervandew/supertab'
+" Plug 'msanders/snipmate.vim'
+" plug on GitHub repo
+" plug from http://vim-scripts.org/vim/scripts.html
+" Plug 'L9'
+" Plug 'git://git.wincent.com/command-t.git'
+" Plug 'file:///home/gmarik/path/to/plugin'
+" Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plug 'user/L9', {'name': 'newL9'}
+call plug#end()
 
 " =================================== Default ===============================
 " Vim with all enhancements
@@ -213,6 +154,21 @@ set undodir=~/vimfiles/_undo/
 " =====================color scheme =============
 colorscheme molokai
 " =====================Tagbar ==============
-nmap <leader>mm :TagbarToggle<CR>
+nmap <leader>tt :TagbarToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-nmap <leader>hh :GundoToggle<CR>
+nmap <leader>gg :GundoToggle<CR>
+let g:airline_powerline_fonts = 1
+let g:tagbar_position = 'left'
+let g:vim_markdown_folding_disabled = 1 "行数较多的时候折叠会导致中文输入卡，因此需要关闭vim-markdown的折叠功能
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
+autocmd vimenter * NERDTree  "NERDTree 启动时开启
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
+let NERDTreeWinPos="right" "NERDTree 在右侧显示
+let NERDTreeShowHidden=1 " show hidden file
+let NERDTreeDirArrows=1 "Show Node model
+let NERDTreeShowLineNumbers=1 "Show line number
+let NERDTreeHighlightCursorline=1
+let g:indentLine_enabled = 1
