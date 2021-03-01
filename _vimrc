@@ -19,8 +19,6 @@ set number
 set nowrap "不折行
 set showcmd "在状态栏显示正在输入的命令
 set laststatus=2 "总是显示状态栏
-colorscheme molokai
-"colorscheme jellybeans
 " ==========================  Search & Replace =================================
 set ignorecase "搜索的时候大小写不敏感
 
@@ -203,3 +201,7 @@ set backupdir=~/vimfiles/_backup/,~/tmp,.
 " turn on undo files, put them in a common location
 set undofile
 set undodir=~/vimfiles/_undo/
+
+" ==================color scheme=================
+colorscheme molokai
+"colorscheme jellybeans
