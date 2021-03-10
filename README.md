@@ -1,6 +1,7 @@
 # vimrc
 
-Jacky's vimrc. vim plugin base on Vim-Plug.
+Jacky's vimrc. vim plugin base on Vim-Plug.  
+Windows use Windows Terminal & PowerShell. MacOS see **macOS** branch  
 
 - Encoding  
 - Color & syntax  
@@ -32,4 +33,5 @@ Jacky's vimrc. vim plugin base on Vim-Plug.
 - Ctrip using ctrl+p as shotkey  
 - NERDCommenter using ",c " as shotkey  
 - Tagbars 依赖 *Exuberant catgs*  也就是传说中的（ctags.exe）, 因此需要在环境变量中指定目录或设定 *g:tagbar_ctags_bin*  
+
 

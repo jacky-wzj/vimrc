@@ -1,13 +1,12 @@
-cd d:\workspace\ " 设置默认的工作目录
+"cd d:\workspace\ " 设置默认的工作目录
 
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 set autochdir "Automatically change the current directory"
 " ============================= encoding ==============================
-set encoding=utf-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set guifont=JetBrainsMono\ NF:h12
-set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
+set encoding=UTF-8
+set langmenu=UTF-8
+set guifont=JetBrainsMono\ NF:h10
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8 "只对终端影响(默认
 set ffs=unix,dos,mac "use UNIX as the standard file type
 
@@ -48,7 +47,7 @@ Plug 'bling/vim-airline'
 Plug 'preservim/nerdtree' 
 "Plug 'kien/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons' "增加符号标识,依赖 nerd-fonts
-Plug 'preservim/tagbar' "依赖tags，需要单独安装
+Plug 'preservim/tagbar' "依赖tags，需要单独安装,可以用coc 替代
 Plug 'Yggdroot/indentLine' "缩进显示
 Plug 'sjl/gundo.vim' "此次文本编辑记录
 " Plug 'dyng/ctrlsf.vim' "依赖ack

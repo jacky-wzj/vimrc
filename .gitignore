@@ -3,4 +3,5 @@
 !.gitignore
 !_vimrc
 !ctags.exe
+!*.psl
 !jellybeans.vim
