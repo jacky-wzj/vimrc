@@ -59,6 +59,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim' 
 Plug 'flazz/vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tomtom/tcomment_vim'
 call plug#end()
 
 " =================================== Default ===============================
@@ -323,7 +324,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " airline show coc status
 let g:airline#extensions#coc#enabled = 1
 " add coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker']
+let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
 
 "====================== fzf ====================
 " This is the default extra key bindings
@@ -379,3 +380,9 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+"======================= TComments ======================
+let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多了
+nmap <leader>gc <Plug>TComment_<c-_><c-_>
+vmap <leader>gc <Plug>TComment_<c-_><c-_>
+nmap <leader>gb <Plug>TComment_<c-_>b
+xmap <leader>gb <Plug>TComment_<c-_>b
