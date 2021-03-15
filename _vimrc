@@ -2,6 +2,10 @@
 
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 set autochdir "Automatically change the current directory"
+" set shell=wsl.exe "速度真快,可惜不能替换builtin-term导致plugin不能完整工作
+" set shellpipe=|
+" set shellredir=>
+" set shellcmdflag=
 " ============================= encoding ==============================
 set encoding=UTF-8
 set langmenu=UTF-8
@@ -47,18 +51,22 @@ Plug 'bling/vim-airline'
 Plug 'preservim/nerdtree' 
 "Plug 'kien/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons' "增加符号标识,依赖 nerd-fonts
-Plug 'preservim/tagbar' "依赖tags，需要单独安装,可以用coc 替代
-Plug 'Yggdroot/indentLine' "缩进显示
-Plug 'sjl/gundo.vim' "此次文本编辑记录
-" Plug 'dyng/ctrlsf.vim' "依赖ack
+"Plug 'preservim/tagbar' "依赖tags，需要单独安装,可以用coc 替代
+"Plug 'Yggdroot/indentLine' "缩进显示
+Plug 'sjl/gundo.vim' "此次文本编辑记录, 依赖 python
+"Plug 'dyng/ctrlsf.vim' "依赖ack
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' "依赖rg
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' "依赖git
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim' 
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" markdown-preview 可能会安装失败,需要手动触发一次安装
+" :source %
+" :PluginInstall
+" :call mkdp#util#install()
 Plug 'flazz/vim-colorschemes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "依赖nodejs
 Plug 'tomtom/tcomment_vim'
 call plug#end()
 
@@ -149,7 +157,7 @@ let g:vim_markdown_conceal = 0
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_conceal_code_blocks = 0
-autocmd vimenter * NERDTree  "NERDTree 启动时开启
+" autocmd vimenter * NERDTree  "NERDTree 启动时开启
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "NERDTree 随最后一个窗口关闭
 let NERDTreeWinPos="right" "NERDTree 在右侧显示
 let NERDTreeShowHidden=1 " show hidden file
@@ -157,7 +165,7 @@ let NERDTreeDirArrows=1 "Show Node model
 let NERDTreeShowLineNumbers=1 "Show line number
 let NERDTreeHighlightCursorline=1
 let g:indentLine_enabled = 1
-
+let g:indentLine_setConceal = 0 "indentLine 会隐藏json文件的冒号,使用起来非常不便
 " ====================== coc =====================
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -324,8 +332,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " airline show coc status
 let g:airline#extensions#coc#enabled = 1
 " add coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
-
+ let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
 "====================== fzf ====================
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -380,9 +387,13 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+" command! -bang -nargs=? -complete=dir Files
+"     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'batcat {}']}, <bang>0)
+let g:fzf_preview_window = []
 "======================= TComments ======================
 let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多了
 nmap <leader>gc <Plug>TComment_<c-_><c-_>
 vmap <leader>gc <Plug>TComment_<c-_><c-_>
 nmap <leader>gb <Plug>TComment_<c-_>b
 xmap <leader>gb <Plug>TComment_<c-_>b
+

@@ -21,7 +21,7 @@ Windows use Windows Terminal & PowerShell. MacOS see **macOS** branch
     > Plug 'tpope/vim-fugitive'  
     > Plug 'godlygeek/tabular'  
     > Plug 'plasticboy/vim-markdown'  
-    > Plug 'iamcco/markdown-preview.nvim'  
+    > Plug 'iamcco/markdown-preview.nvim'   
     > Plug 'flazz/vim-colorschemes'  
     > Plug 'neoclide/coc.nvim', {'branch': 'release'}  
     > Plug 'tomtom/tcomment_vim'  
