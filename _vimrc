@@ -1,6 +1,8 @@
 "cd d:\workspace\ " 设置默认的工作目录
 
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
+set cursorline
+set cursorcolumn
 set autochdir "Automatically change the current directory"
 " set shell=wsl.exe "速度真快,可惜不能替换builtin-term导致plugin不能完整工作
 " set shellpipe=|
@@ -166,6 +168,7 @@ let NERDTreeShowLineNumbers=1 "Show line number
 let NERDTreeHighlightCursorline=1
 let g:indentLine_enabled = 1
 let g:indentLine_setConceal = 0 "indentLine 会隐藏json文件的冒号,使用起来非常不便
+hi Cursor          guifg=#FF0000 guibg=#F8F8F0 "高亮光标所在位置,避免搜索高亮的冲突
 " ====================== coc =====================
 " TextEdit might fail if hidden is not set.
 set hidden
