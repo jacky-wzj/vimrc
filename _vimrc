@@ -3,7 +3,7 @@
 xnoremap p pgvy  "  粘贴时不置换“剪贴板”
 set cursorline
 set cursorcolumn
-set autochdir "Automatically change the current directory"
+" set autochdir "Automatically change the current directory"
 " set shell=wsl.exe "速度真快,可惜不能替换builtin-term导致plugin不能完整工作
 " set shellpipe=|
 " set shellredir=>
@@ -37,16 +37,20 @@ set smarttab
 
 " ========================== key mapping ======================================
 let mapleader = ","
-map <c-k> <C-w><Up>
-map <c-j> <C-w><Down>
-map <c-l> <C-w><Right>
-map <c-h> <C-w><Left>
-map <leader>jj <C-w>10+        "屏幕下移
-map <leader>kk <C-w>10-        "屏幕上移
-map <leader>hh <C-w>30<
-map <leader>ll <C-w>30>
-map <leader>n :NERDTreeToggle<CR>
-map <leader>r :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
+map <silent><c-k> <C-w><Up>
+map <silent><c-j> <C-w><Down>
+map <silent><c-l> <C-w><Right>
+map <silent><c-h> <C-w><Left>
+map <silent><leader>jj <C-w>10+        "屏幕下移
+map <silent><leader>kk <C-w>10-        "屏幕上移
+map <silent><leader>hh <C-w>30<
+map <silent><leader>ll <C-w>30>
+map <silent><leader>nn :NERDTreeToggle<CR>
+map <silent><leader>rr :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
+" nmap <silent><leader>tt :TagbarToggle<CR> "被coc 的<space>o 替代
+" nmap <F8> :TagbarToggle<CR>
+nmap <silent><leader>gg :GundoToggle<CR>
+nnoremap <silent><leader>nh :nohl<CR>
 " ========================== VimPlug ======================================
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
@@ -148,10 +152,7 @@ set undodir=~/vimfiles/_undo/
 
 " =====================color scheme =============
 colorscheme molokai
-" =====================Tagbar ==============
-nmap <leader>tt :TagbarToggle<CR>
-nmap <F8> :TagbarToggle<CR>
-nmap <leader>gg :GundoToggle<CR>
+" =====================Customize ==============
 let g:airline_powerline_fonts = 1
 let g:tagbar_position = 'left'
 let g:vim_markdown_folding_disabled = 1 "行数较多的时候折叠会导致中文输入卡，因此需要关闭vim-markdown的折叠功能
