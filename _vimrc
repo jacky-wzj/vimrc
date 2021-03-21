@@ -45,20 +45,25 @@ map <silent><leader>jj <C-w>10+        "屏幕下移
 map <silent><leader>kk <C-w>10-        "屏幕上移
 map <silent><leader>hh <C-w>30<
 map <silent><leader>ll <C-w>30>
-map <silent><leader>nn :NERDTreeToggle<CR>
-map <silent><leader>rr :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
-" nmap <silent><leader>tt :TagbarToggle<CR> "被coc 的<space>o 替代
+map <silent><leader>n :NERDTreeToggle<CR>
+" map <silent><leader>rr :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
+nmap <silent><leader>t :TagbarToggle<CR> 
 " nmap <F8> :TagbarToggle<CR>
-nmap <silent><leader>gg :GundoToggle<CR>
+nmap <silent><leader>g :GundoToggle<CR>
 nnoremap <silent><leader>nh :nohl<CR>
+" nmap <silent><leader>p :Files<CR>
+" nmap <silent><leader>l :BLines<CR>
+" nmap <silent><leader>b :Buffers<CR>
+nmap <silent><c-p> :Files<CR>
+nmap <silent><c-l> :BLines<CR>
 " ========================== VimPlug ======================================
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'preservim/nerdtree' 
 "Plug 'kien/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons' "增加符号标识,依赖 nerd-fonts
-"Plug 'preservim/tagbar' "依赖tags，需要单独安装,可以用coc 替代
-"Plug 'Yggdroot/indentLine' "缩进显示
+Plug 'preservim/tagbar' "依赖tags，需要单独安装,可以用coc 替代
+Plug 'Yggdroot/indentLine' "缩进显示
 Plug 'sjl/gundo.vim' "此次文本编辑记录, 依赖 python
 "Plug 'dyng/ctrlsf.vim' "依赖ack
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -74,6 +79,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'flazz/vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "依赖nodejs
 Plug 'tomtom/tcomment_vim'
+" Plug 'mg979/vim-visual-multi'
 call plug#end()
 
 " =================================== Default ===============================
@@ -167,9 +173,22 @@ let NERDTreeShowHidden=1 " show hidden file
 let NERDTreeDirArrows=1 "Show Node model
 let NERDTreeShowLineNumbers=1 "Show line number
 let NERDTreeHighlightCursorline=1
-let g:indentLine_enabled = 1
-let g:indentLine_setConceal = 0 "indentLine 会隐藏json文件的冒号,使用起来非常不便
+" let g:indentLine_setConceal = 0 "indentLine 会隐藏json文件的冒号,使用起来非常不便
+let g:indentLine_fileTypeExclude = ['json'] "上面的配置会导致indentline功能丧失,先暂时过滤掉json文件吧
 hi Cursor          guifg=#FF0000 guibg=#F8F8F0 "高亮光标所在位置,避免搜索高亮的冲突
+"keep cursor in the middle all the time :)
+nnoremap k kzz
+nnoremap j jzz
+nnoremap p pzz
+nnoremap P Pzz
+nnoremap G Gzz
+nnoremap x xzz
+inoremap <ESC> <ESC>zz
+nnoremap <ENTER> <ENTER>zz
+inoremap <ENTER> <ENTER><ESC>zzi
+nnoremap o o<ESC>zza
+nnoremap O O<ESC>zza
+nnoremap a a<ESC>zza
 " ====================== coc =====================
 " TextEdit might fail if hidden is not set.
 set hidden
