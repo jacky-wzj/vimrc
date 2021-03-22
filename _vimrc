@@ -49,13 +49,14 @@ map <silent><leader>n :NERDTreeToggle<CR>
 " map <silent><leader>rr :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
 nmap <silent><leader>t :TagbarToggle<CR> 
 " nmap <F8> :TagbarToggle<CR>
-nmap <silent><leader>g :GundoToggle<CR>
+nmap <silent><leader>gu :GundoToggle<CR>
 nnoremap <silent><leader>nh :nohl<CR>
-" nmap <silent><leader>p :Files<CR>
-" nmap <silent><leader>l :BLines<CR>
-" nmap <silent><leader>b :Buffers<CR>
-nmap <silent><c-p> :Files<CR>
-nmap <silent><c-l> :BLines<CR>
+nmap <silent><c-p> :Files!<CR>
+nmap <silent><leader>/b :BLines!<CR>
+nmap <silent><leader>// :Lines!<CR>
+nmap <silent><leader>gc :Commits!<CR>
+nmap <silent><leader>gb :BCommits!<CR>
+nmap <silent><leader>/rg :Rg<CR>
 " ========================== VimPlug ======================================
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
@@ -67,7 +68,7 @@ Plug 'Yggdroot/indentLine' "缩进显示
 Plug 'sjl/gundo.vim' "此次文本编辑记录, 依赖 python
 "Plug 'dyng/ctrlsf.vim' "依赖ack
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim' "依赖rg
+Plug 'junegunn/fzf.vim' "依赖rg. fzf.vim的preview.sh脚本在windows下会有换行语法错误. 查看命令为:set ff , 修复命令为:set ff=unix
 Plug 'tpope/vim-fugitive' "依赖git
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -410,13 +411,9 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-" command! -bang -nargs=? -complete=dir Files
-"     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'batcat {}']}, <bang>0)
-let g:fzf_preview_window = []
 "======================= TComments ======================
 let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多了
-nmap <leader>gc <Plug>TComment_<c-_><c-_>
-vmap <leader>gc <Plug>TComment_<c-_><c-_>
-nmap <leader>gb <Plug>TComment_<c-_>b
-xmap <leader>gb <Plug>TComment_<c-_>b
-
+nmap <leader>;c <Plug>TComment_<c-_><c-_>
+vmap <leader>;c <Plug>TComment_<c-_><c-_>
+nmap <leader>;b <Plug>TComment_<c-_>b
+xmap <leader>;b <Plug>TComment_<c-_>b
