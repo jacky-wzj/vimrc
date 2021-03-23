@@ -11,7 +11,7 @@ set cursorcolumn
 " ============================= encoding ==============================
 set encoding=UTF-8
 set langmenu=UTF-8
-set guifont=JetBrainsMono\ NF:h10
+set guifont=JetBrainsMono\ NF:h9
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8 "只对终端影响(默认
 set ffs=unix,dos,mac "use UNIX as the standard file type
@@ -20,6 +20,7 @@ set ffs=unix,dos,mac "use UNIX as the standard file type
 "syntax on
 "filetype plugin indent on
 set number
+set relativenumber
 set nowrap "不折行
 set showcmd "在状态栏显示正在输入的命令
 set laststatus=2 "总是显示状态栏
@@ -56,7 +57,7 @@ nmap <silent><leader>/b :BLines!<CR>
 nmap <silent><leader>// :Lines!<CR>
 nmap <silent><leader>gc :Commits!<CR>
 nmap <silent><leader>gb :BCommits!<CR>
-nmap <silent><leader>/rg :Rg<CR>
+nmap <silent><leader>/rg :Rg!<CR>
 " ========================== VimPlug ======================================
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
@@ -417,3 +418,4 @@ nmap <leader>;c <Plug>TComment_<c-_><c-_>
 vmap <leader>;c <Plug>TComment_<c-_><c-_>
 nmap <leader>;b <Plug>TComment_<c-_>b
 xmap <leader>;b <Plug>TComment_<c-_>b
+
