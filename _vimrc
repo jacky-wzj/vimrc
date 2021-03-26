@@ -46,9 +46,9 @@ map <silent><leader>jj <C-w>10+        "屏幕下移
 map <silent><leader>kk <C-w>10-        "屏幕上移
 map <silent><leader>hh <C-w>30<
 map <silent><leader>ll <C-w>30>
-map <silent><leader>n :NERDTreeToggle<CR>
+map <silent><leader>/n :NERDTreeToggle<CR>
 " map <silent><leader>rr :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
-nmap <silent><leader>t :TagbarToggle<CR> 
+nmap <silent><leader>/t :TagbarToggle<CR> 
 " nmap <F8> :TagbarToggle<CR>
 nmap <silent><leader>gu :GundoToggle<CR>
 nnoremap <silent><leader>nh :nohl<CR>
@@ -58,6 +58,7 @@ nmap <silent><leader>// :Lines!<CR>
 nmap <silent><leader>gc :Commits!<CR>
 nmap <silent><leader>gb :BCommits!<CR>
 nmap <silent><leader>/rg :Rg!<CR>
+nmap <silent><leader>:b :term bash<CR>
 " ========================== VimPlug ======================================
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
@@ -81,6 +82,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'flazz/vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "依赖nodejs
 Plug 'tomtom/tcomment_vim'
+Plug 'pseewald/vim-anyfold'
 " Plug 'mg979/vim-visual-multi'
 call plug#end()
 
@@ -358,6 +360,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:airline#extensions#coc#enabled = 1
 " add coc extensions
  let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
+autocmd CursorHold * silent call CocActionAsync('highlight')
+let b:coc_pairs_disabled = ['<']
 "====================== fzf ====================
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -412,10 +416,17 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_preview_window = [] "关闭预览,因为预览比较卡
 "======================= TComments ======================
 let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多了
 nmap <leader>;c <Plug>TComment_<c-_><c-_>
 vmap <leader>;c <Plug>TComment_<c-_><c-_>
 nmap <leader>;b <Plug>TComment_<c-_>b
 xmap <leader>;b <Plug>TComment_<c-_>b
+"==================== vim-anyfold ==========================
+autocmd Filetype * AnyFoldActivate
+let g:anyfold_fold_comments=1
+set foldlevel=1
+" colorscheme solarized
+" hi Folded term=NONE cterm=NONE
 
