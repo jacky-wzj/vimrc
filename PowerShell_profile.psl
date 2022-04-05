@@ -1,10 +1,4 @@
 
-function proxy-login
-{
-    ssh -D 7777 root@IP
-}
-
-
 Set-Location -Path "D:\workspace\"
 #------------------------------- Import Modules BEGIN -------------------------------
 # 引入 posh-git
@@ -47,6 +41,27 @@ Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
 
 #-------------------------------    Functions BEGIN   -------------------------------
+
+function proxy-login
+{
+    ssh -C -D 7777 -o ServerAliveInterval=30 -o ServerAliveCountMax=99999 root@47.240.64.108
+}
+
+function proxy-system
+{
+	$env:http_proxy="http://127.0.0.1:1081"
+	$env:https_proxy="http://127.0.0.1:1081"
+}
+
+function unproxy
+{
+	$env:http_proxy=""
+	$env:https_proxy=""
+}
+
+#设置CMD的代理 -- 需要独立设置(每次关闭terminal 会自动取消代理)
+#set https_proxy=http://127.0.0.1:1081
+#set http_proxy=http://127.0.0.1:1081
 
 #-------------------------------    Functions END     -------------------------------
 

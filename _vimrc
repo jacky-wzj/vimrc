@@ -17,14 +17,14 @@ set termencoding=utf-8 "只对终端影响(默认
 set ffs=unix,dos,mac "use UNIX as the standard file type
 
 " ========================== Color & syntax & Theme =================================
-"syntax on
-"filetype plugin indent on
+syntax on
+filetype plugin indent on
 set number
 set relativenumber
 set nowrap "不折行
 set showcmd "在状态栏显示正在输入的命令
 set laststatus=2 "总是显示状态栏
-
+set termguicolors
 " ==========================  Search & Replace =================================
 set ignorecase "搜索的时候大小写不敏感
 
@@ -50,13 +50,13 @@ map <silent><leader>/n :NERDTreeToggle<CR>
 " map <silent><leader>rr :NERDTree %:p:h<CR>    "刷新 NERDTree 到当前目录
 nmap <silent><leader>/t :TagbarToggle<CR> 
 " nmap <F8> :TagbarToggle<CR>
-nmap <silent><leader>gu :GundoToggle<CR>
+nmap <silent><leader>/g :GundoToggle<CR>
 nnoremap <silent><leader>nh :nohl<CR>
 nmap <silent><c-p> :Files!<CR>
 nmap <silent><leader>/b :BLines!<CR>
 nmap <silent><leader>// :Lines!<CR>
-nmap <silent><leader>gc :Commits!<CR>
-nmap <silent><leader>gb :BCommits!<CR>
+nmap <silent><leader>/gc :Commits!<CR>
+nmap <silent><leader>/gb :BCommits!<CR>
 nmap <silent><leader>/rg :Rg!<CR>
 nmap <silent><leader>:b :term bash<CR>
 " ========================== VimPlug ======================================
@@ -271,7 +271,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -359,9 +359,10 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " airline show coc status
 let g:airline#extensions#coc#enabled = 1
 " add coc extensions
- let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
+" let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
+let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-spell-checker','coc-pairs']
 autocmd CursorHold * silent call CocActionAsync('highlight')
-let b:coc_pairs_disabled = ['<']
+autocmd FileType * let b:coc_pairs_disabled = ['<']
 "====================== fzf ====================
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -418,7 +419,7 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_preview_window = [] "关闭预览,因为预览比较卡
 "======================= TComments ======================
-let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多了
+let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多太复杂了
 nmap <leader>;c <Plug>TComment_<c-_><c-_>
 vmap <leader>;c <Plug>TComment_<c-_><c-_>
 nmap <leader>;b <Plug>TComment_<c-_>b
@@ -429,4 +430,4 @@ let g:anyfold_fold_comments=1
 set foldlevel=1
 " colorscheme solarized
 " hi Folded term=NONE cterm=NONE
-
+let g:anyfold_motion=0 "关闭映射
