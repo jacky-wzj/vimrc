@@ -1,0 +1,9 @@
+{
+"suggest.autoTrigger":"trigger",
+"java.import.maven.enabled":true,
+"java.progressReports.enabled":true,
+"java.autobuild.enabled":true,
+"java.trace.server": "verbose",
+"project.rootPatterns":[".git","pom.xml"],
+"coc.preferences.rootPatterns":["pom.xml",".git",".project",".hg",".projections.json"]
+}

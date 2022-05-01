@@ -11,7 +11,7 @@ set cursorcolumn
 " ============================= encoding ==============================
 set encoding=UTF-8
 set langmenu=UTF-8
-set guifont=JetBrainsMono\ NF:h9
+set guifont=JetBrainsMono\ NF:h12
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8 "÷ª∂‘÷’∂À”∞œÏ(ƒ¨»œ
 set ffs=unix,dos,mac "use UNIX as the standard file type
@@ -83,9 +83,9 @@ Plug 'flazz/vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "“¿¿µnodejs
 Plug 'tomtom/tcomment_vim'
 Plug 'pseewald/vim-anyfold'
+Plug 'chrisbra/vim-diff-enhanced'
 " Plug 'mg979/vim-visual-multi'
 call plug#end()
-
 " =================================== Default ===============================
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
@@ -161,7 +161,8 @@ set undodir=~/vimfiles/_undo/
 
 
 " =====================color scheme =============
-colorscheme molokai
+" colorscheme molokai
+colorscheme gruvbox
 " =====================Customize ==============
 let g:airline_powerline_fonts = 1
 let g:tagbar_position = 'left'
@@ -360,7 +361,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:airline#extensions#coc#enabled = 1
 " add coc extensions
 " let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
-let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-spell-checker','coc-pairs']
+" let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-spell-checker','coc-pairs']
+let g:coc_global_extensions = ['coc-json', 'coc-java', 'coc-markdownlint', 'coc-sql', 'coc-pairs','coc-project']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd FileType * let b:coc_pairs_disabled = ['<']
 "====================== fzf ====================
@@ -431,3 +433,8 @@ set foldlevel=1
 " colorscheme solarized
 " hi Folded term=NONE cterm=NONE
 let g:anyfold_motion=0 "πÿ±’”≥…‰
+" ====================== vim-diff-enhanced =======================
+" started In Diff-Mode set diffexpr (plugin not loaded yet)
+if &diff
+    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+endif
