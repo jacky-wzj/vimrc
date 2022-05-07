@@ -1,9 +1,10 @@
 {
 "suggest.autoTrigger":"trigger",
 "java.import.maven.enabled":true,
-"java.progressReports.enabled":true,
+"java.progressReports.enabled":false,
 "java.autobuild.enabled":true,
-"java.trace.server": "verbose",
+"java.format.enabled":true,
 "project.rootPatterns":[".git","pom.xml"],
-"coc.preferences.rootPatterns":["pom.xml",".git",".project",".hg",".projections.json"]
+"coc.preferences.rootPatterns":[".vimproject",".git",".project",".hg",".projections.json"],
+"java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"C:\\Users\\QC\\.m2\\repository\\org\\projectlombok\\lombok\\1.18.6\\lombok-1.18.6.jar\""
 }

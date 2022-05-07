@@ -29,9 +29,9 @@ set termguicolors
 set ignorecase "搜索的时候大小写不敏感
 
 " ========================== The width of Tap ======================================
-set tabstop=4 "设置 tab 宽度为4
-set shiftwidth=4  "按退格键时可以一次删除4个空格
-set softtabstop=4 "设置自动对齐空格数
+set tabstop=2 "设置 tab 宽度为2
+set shiftwidth=2  "按退格键时可以一次删除2个空格
+set softtabstop=2 "设置自动对齐空格数
 set expandtab " 编辑的时候将所有的 tab 设置为空格(expandtab)
 set smartindent 
 set smarttab
@@ -52,9 +52,10 @@ nmap <silent><leader>/t :TagbarToggle<CR>
 " nmap <F8> :TagbarToggle<CR>
 nmap <silent><leader>/g :GundoToggle<CR>
 nnoremap <silent><leader>nh :nohl<CR>
-nmap <silent><c-p> :Files!<CR>
-nmap <silent><leader>/b :BLines!<CR>
-nmap <silent><leader>// :Lines!<CR>
+" nmap <silent><c-p> :Files!<CR>
+nmap <silent><c-p> :Files<CR>
+" nmap <silent><leader>/b :BLines!<CR>
+" nmap <silent><leader>// :Lines!<CR>
 nmap <silent><leader>/gc :Commits!<CR>
 nmap <silent><leader>/gb :BCommits!<CR>
 nmap <silent><leader>/rg :Rg!<CR>
@@ -85,6 +86,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'pseewald/vim-anyfold'
 Plug 'chrisbra/vim-diff-enhanced'
 " Plug 'mg979/vim-visual-multi'
+Plug 'git@github.com:uiiaoo/java-syntax.vim.git'
 call plug#end()
 " =================================== Default ===============================
 " Vim with all enhancements
@@ -360,9 +362,10 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " airline show coc status
 let g:airline#extensions#coc#enabled = 1
 " add coc extensions
-" let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-highlight','coc-spell-checker','coc-pairs']
-" let g:coc_global_extensions = ['coc-json', 'coc-java','coc-markdownlint','coc-sql','coc-spell-checker','coc-pairs']
-let g:coc_global_extensions = ['coc-json', 'coc-java', 'coc-markdownlint', 'coc-sql', 'coc-pairs','coc-project']
+" let g:coc_global_extensions = ['coc-highlight']
+" let g:coc_global_extensions = ['coc-spell-checker']
+" let g:coc_global_extensions = [coc-project']
+let g:coc_global_extensions = ['coc-json', 'coc-java', 'coc-markdownlint', 'coc-sql', 'coc-pairs','coc-xml']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd FileType * let b:coc_pairs_disabled = ['<']
 "====================== fzf ====================
