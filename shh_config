@@ -1,0 +1,7 @@
+Host github.com
+    Hostname github.com
+    ServerAliveInterval 55
+    ForwardAgent yes
+    ProxyCommand "C:\Program Files\Git\mingw64\bin\connect.exe" -S 127.0.0.1:7777 %h %p
+#   linux use nc
+#   ProxyCommand nc -X 5 -x 127.0.0.1:7777 %h %p
