@@ -58,7 +58,7 @@ nmap <silent><leader>// :Lines!<CR>
 nmap <silent><leader>gc :Commits!<CR>
 nmap <silent><leader>gb :BCommits!<CR>
 nmap <silent><leader>/rg :Rg!<CR>
-nmap <silent><leader>:b :term bash<CR>
+nmap <silent><leader>:b :term<CR>
 
 " ========================== VimPlug ======================================
 call plug#begin('~/.vim/plugged')
@@ -416,7 +416,7 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-let g:fzf_preview_window = [] "关闭预览,因为预览比较卡
+" let g:fzf_preview_window = [] "关闭预览,因为预览比较卡
 "======================= TComments ======================
 let g:tcomment_maps = 0 "注释掉自带的映射,原映射搞的太多了
 nmap <leader>;c <Plug>TComment_<c-_><c-_>

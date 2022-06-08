@@ -1,0 +1,1 @@
+autossh -M 17778 -CNR 17777:localhost:22 root@47.240.64.108 -v 
